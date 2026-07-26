@@ -48,7 +48,7 @@ body{
   font-weight: bold;
   border: 2px solid white;
   border-radius: 12px;
-  
+  cursor: pointer;
 }
 
 .btn a{
@@ -69,19 +69,20 @@ body{
 }
 
 .contener{
-  width:380px;
-  height:450px;
+  width: 380px;
+  min-height: 430px;
   background-color: transparent;
   text-align: center;
   margin-top: 24px;
-  margin-left: 120px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: bold;
   border-radius: 33px;
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  background-color: transparent;
   margin-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 
@@ -92,11 +93,15 @@ body{
   margin-top: 45px;
 }
 .first{
-  font-size: 18px;
-  margin-top: 23px;
-  height:29px;
-  border-radius:20px;
-  padding-left: 30px;
+  font-size: 16px;
+  margin-top: 18px;
+  height: 36px;
+  width: 80%;
+  border-radius: 20px;
+  padding-left: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .submit{
@@ -132,7 +137,7 @@ h3{
 }
 
 .icon{
-  font-size: 27px;
+  margin-top: 10px;
 }
 
 .forget_pass{
@@ -223,9 +228,4 @@ h3{
 }
 }
 
-.contener{
-
-  width: 340px;
-  height: 100%;
-  background-color:#000A30;
-}
+/* removed duplicate .contener override */

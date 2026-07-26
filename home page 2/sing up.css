@@ -47,7 +47,7 @@
       font-weight: bold;
       border: 2px solid white;
       border-radius: 12px;
-      
+      cursor: pointer;
     }
 
     .btn a{
@@ -68,19 +68,20 @@
     }
 
     .contener{
-      width:380px;
-      height:526px;
-      background-color: #3edcf7;
+      width: 380px;
+      min-height: 520px;
+      background-color: transparent;
       text-align: center;
       margin-top: 24px;
-      margin-left: 120px;
+      margin-left: auto;
+      margin-right: auto;
       font-weight: bold;
       border-radius: 33px;
       align-items: center;
       justify-content: center;
       border: 2px solid white;
-      background-color: transparent;
       margin-bottom: 30px;
+      padding-bottom: 20px;
     }
     .signup{
       padding-top: 17px;
@@ -88,11 +89,15 @@
       color: white;
     }
     .first{
-      font-size: 18px;
-      margin-top: 23px;
-      height:29px;
-      border-radius:20px;
-      padding-left: 30px;
+      font-size: 16px;
+      margin-top: 18px;
+      height: 36px;
+      width: 80%;
+      border-radius: 20px;
+      padding-left: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   
     .submit{
@@ -132,7 +137,7 @@
       font-size: 27px;
     }
   
-    @media screen and(max-width:800px)
+    @media screen and (max-width: 800px)
     {
 
       .btn{
@@ -150,7 +155,7 @@
 
     }
 
-    @media screen and(max-width:600px)
+    @media screen and (max-width: 600px)
     {
       .btn{
       width: 100px;
@@ -162,11 +167,12 @@
        width:340px;
        height:490px;
        border-radius: 29px;
-       margin-left: 50px;
+       margin-left: auto;
+       margin-right: auto;
       }
   }
 
-  @media screen and(max-width:450px)
+    @media screen and (max-width: 450px)
     {
       .btn{
       width: 76px;
@@ -178,16 +184,18 @@
        width:327px;
        height:450px;
        border-radius: 29px;
-       margin-left: 30px;
+       margin-left: auto;
+       margin-right: auto;
       }
   }
 
-  @media screen and(max-width:350px){
+    @media screen and (max-width: 350px){
     .contener{
        width:299px;
        height:270px;
        border-radius: 23px;
-       margin-left: 4px;
+       margin-left: auto;
+       margin-right: auto;
       }
     
       .signup{
