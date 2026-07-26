@@ -1,282 +1,159 @@
+/* =============================================
+   STAR X — Sign Up Page
+   Dark Cinema Theme
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-    body{
-      /* background-image: url("animal_movie_jpg.jpg"); */
-      background-repeat: no-repeat;  
-      background-size: cover;
-      /* background-color: linear-gradient(rgba(0,0,0,0.9)); */
-      background-color: #000A30;
-      /* animation: change 23s infinite; */
-    } 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    @keyframes change{
-      25%{
-            background-image: url("animal_movie_jpg.jpg");
-            background-repeat: no-repeat;  
-            background-size: cover;
-            background-color: linear-gradient(rgba(0,0,0,0.9));
-      }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a0a;
+  background-image: radial-gradient(ellipse at top, #1a0a0a 0%, #0a0a0a 70%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-      50%{
-        background-image: url("sam\ bahadur\ 1.jpg");
-            background-repeat: no-repeat;  
-            background-size: cover;
-            background-color: linear-gradient(rgba(0,0,0,0.9));
-      }
+/* Back button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  padding: 8px 18px;
+  margin: 18px 0 0 18px;
+  background-color: transparent;
+  color: #aaa;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover {
+  border-color: #e50914;
+  color: #fff;
+}
+.btn a {
+  text-decoration: none;
+  color: inherit;
+}
 
-      75%{
-        background-image: url("leo3.jpg");
-            background-repeat: no-repeat;  
-            background-size: cover;
-            background-color: linear-gradient(rgba(0,0,0,0.9));
-      }
-      100%{
-        background-image: url("oppenheimer.jpg");
-            background-repeat: no-repeat;  
-            background-size: cover;
-            background-color: linear-gradient(rgba(0,0,0,0.9));
-      }
-    }
+/* Form wrapper */
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 24px 20px;
+  background-color: transparent;
+}
 
-    .btn{
-      width: 140px;
-      height: 42px;
-      margin-left: 15px;
-      margin-top: 15px;
-      background-color: #FF595A;
-      color: white;
-      font-weight: bold;
-      border: 2px solid white;
-      border-radius: 12px;
-      cursor: pointer;
-    }
+/* Card container */
+.contener {
+  width: 440px;
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 36px 36px 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
 
-    .btn a{
-      text-decoration: none;
-      color: white;
-    }
+/* Title */
+.signup {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
 
-    .btn :hover{
-      color: orange;
-    }
+/* Input groups */
+.icon {
+  margin-bottom: 14px;
+}
 
-    
+.first {
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+  display: block;
+}
+.first:focus {
+  border-color: #e50914;
+}
+.first::placeholder {
+  color: #666;
+}
 
-    .form{
-      display: flex;
-      justify-content: center;
-      background-color: transparent;
-    }
+/* Submit button */
+.submit {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #e50914;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.submit:hover {
+  background-color: #b80710;
+}
+.submit:active {
+  transform: scale(0.98);
+}
 
-    .contener{
-      width: 380px;
-      min-height: 520px;
-      background-color: transparent;
-      text-align: center;
-      margin-top: 24px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: bold;
-      border-radius: 33px;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid white;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-    }
-    .signup{
-      padding-top: 17px;
-      font-size:37px;
-      color: white;
-    }
-    .first{
-      font-size: 16px;
-      margin-top: 18px;
-      height: 36px;
-      width: 80%;
-      border-radius: 20px;
-      padding-left: 15px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  
-    .submit{
-      font-size: 19px;
-      height:50px;
-      width: 130px;
-      margin-top: 30px;
-      padding: 12px;
-      border-radius:17px;
-      background-color: #FF595A;
-      color: white;
-      border: 2px solid white;
-    }
-    .submit:hover{
-      background-color: white;
-      color: black;
-    }
-    u{
-      color: blue;
-      margin-top: 45px;
-    }
+h3 {
+  color: #888;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 18px;
+}
+u {
+  color: inherit;
+}
+.a {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 500;
+}
+.a:hover {
+  color: #ff4d4d;
+  text-decoration: underline;
+}
 
-    h3{
-      color: white;
-    }
-
-    .a{
-      text-decoration: none;
-      color: rgb(172, 255, 17);
-    }
-
-    .a:hover{
-      color: orange;
-    }
-    
-    .icon{
-      font-size: 27px;
-    }
-  
-    @media screen and (max-width: 800px)
-    {
-
-      .btn{
-      width: 125px;
-      height: 37px;
-      border-radius: 10px;
-      
-      }
-
-      .contener{
-       width:340px;
-       height:490px;
-       border-radius: 29px;
-      }
-
-    }
-
-    @media screen and (max-width: 600px)
-    {
-      .btn{
-      width: 100px;
-      height: 37px;
-      border-radius: 10px;
-      }
-       
-      .contener{
-       width:340px;
-       height:490px;
-       border-radius: 29px;
-       margin-left: auto;
-       margin-right: auto;
-      }
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .contener {
+    width: 100%;
+    border-radius: 12px;
+    padding: 24px 16px;
   }
-
-    @media screen and (max-width: 450px)
-    {
-      .btn{
-      width: 76px;
-      height: 37px;
-      border-radius: 8px;
-      }
-       
-      .contener{
-       width:327px;
-       height:450px;
-       border-radius: 29px;
-       margin-left: auto;
-       margin-right: auto;
-      }
+  .signup {
+    font-size: 22px;
   }
-
-    @media screen and (max-width: 350px){
-    .contener{
-       width:299px;
-       height:270px;
-       border-radius: 23px;
-       margin-left: auto;
-       margin-right: auto;
-      }
-    
-      .signup{
-      padding-top: 12px;
-      font-size:18px;
-    }
-    
-    .first{
-      font-size: 18px;
-      margin-top: 23px;
-      height:29px;
-      border-radius:20px;
-      padding-left: 30px;
-      width: 110px;
-    }
-  
-    .submit{
-      font-size: 17px;
-      height:48px;
-      width: 90px;
-      border-radius:10px;
-    }
-
-    .icon{
-      font-size: 23px;
-    }
-
-    .form{
-      float: left;
-      margin-left: 9px;
-    }
-
-    button .btn{
-      width: 20px;
-      height: 10px;
-    }
-  }
-
-  @media screen and (max-width:390px)
-  {
-    .icon{
-       font-size: 17px;
-    }
-
-    .first{
-      width: 120px;
-      height: 19px;
-      font-size: 15px;
-    }
-
-    .signup{
-      font-size: 28px;
-    }
-
-    .btn{
-      width: 90px;
-      height: 34px;
-      margin-top: 7px;
-      margin-left: 7px;
-    }
-
-    .contener{
-      margin-top: 13px;
-      margin-left: 17px;
-      width: 260px;
-      height: 435px;
-    }    
-    
-    .submit{
-      font-size: 15px;
-      font-weight: bold;
-      width: 110px;
-      height: 43px;
-     
-    }
-    h3{
-      font-size: 17px;
-    }
-
-     
-
-  }
-
-  
+}

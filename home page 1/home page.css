@@ -1,98 +1,140 @@
-*{
-    padding: 0%;
-    margin: 0%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
-    background-color:transparent;
-    
-}
-html,body{
-    height: 100%;
-    width: 100%;
-}
-.home{
-    width: 100%;
-    height: 90%;
-    background-image: url(WhatsApp\ Image\ 2024-02-11\ at\ 8.44.13\ AM.jpeg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+/* =============================================
+   STAR X — Landing Page (Home Page 1)
+   Dark Cinema Theme
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
 }
 
-.nav{
-    justify-content: space-between;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    
-}
-.logo img{
-    height: 70px;
-    width: 100%;
-}
-.text{
-    display: flex;
-    width: 25%;
-    padding: 10px 10px;
-    height: 50px;
-  gap: 5px;  
-
-}
-h4{
-    font-size: 1.5vw;
-    color: white;
-    width: 50%;
-   border: 1px solid white ;
-    border-radius: 20px;
-    text-align: center;
-}
-h4:hover{
-    color: red;
-    background-color: black;
-}
-.text a{
-    text-decoration: none;
-    color: white;
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
 }
 
+/* Hero section */
+.home {
+  width: 100%;
+  height: 92vh;
+  background-image: url('WhatsApp\ Image\ 2024-02-11\ at\ 8.44.13\ AM.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 
-.box{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 350px;
-    background-color:transparent;
-    gap: 10px; 
-    color: black;
-    font-family: arial, sans-serif;
-    
+/* Dark overlay on hero */
+.home::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, rgba(10,10,10,1) 100%);
+  pointer-events: none;
 }
-.card{
-    padding: 10px;
-    display: flex;
-    position: relative;
-    width: 20%;
-    height: 350px;
-    color: black;
-    font-weight: 100;
-    background-color: transparent;
+
+/* Navbar */
+.nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  padding: 0 32px;
 }
-.card img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+
+.logo img {
+  height: 52px;
+  width: 100%;
+  object-fit: contain;
 }
-.card-text{
-    color:black;
-    font-family: arial, sans-serif;
-    
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.card-text h3{
-    text-align: center;
-    font-weight: 600;
+
+h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
 }
-.card-text a{
-    color: black;
-    text-decoration: none;
+
+h4:hover {
+  background-color: #e50914;
+  border-color: #e50914;
+  color: #fff;
+}
+
+.text a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Movie card grid */
+.box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 32px 24px;
+  gap: 18px;
+  background-color: #0a0a0a;
+}
+
+.card {
+  width: calc(16.6% - 18px);
+  min-width: 160px;
+  background-color: #141414;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(229, 9, 20, 0.25);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-text {
+  padding: 10px 12px 14px;
+}
+
+.card-text h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.card-text a {
+  color: #fff;
+  text-decoration: none;
+}
+.card-text a:hover {
+  color: #e50914;
 }

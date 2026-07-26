@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
         Login
 
         <?php if (!empty($login_error)): ?>
-          <p style="color:red; font-size:14px; margin: 8px 0;">&#9888; <?php echo $login_error; ?></p>
+          <p class="error-msg">&#9888; <?php echo $login_error; ?></p>
         <?php endif; ?>
 
         <div class="icon">
