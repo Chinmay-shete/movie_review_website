@@ -1,64 +1,85 @@
 <?php
+ob_start(); // Buffer output so header() always works
 include("connection.php");
-//hide the warning part easily
- 
+// Hide warnings gracefully
+error_reporting(0);
+
+$login_error = "";
 
 if(isset($_POST['submit']))
   {
-     $email = $_POST['email'];
-     $password = $_POST['password'];
+     $email = mysqli_real_escape_string($conn, $_POST['email']);
+     $password = mysqli_real_escape_string($conn, $_POST['password']);
      $query = "SELECT * FROM signup WHERE Email ='$email' && Password = '$password' ";
 
-     $result = mysqli_query($conn,$query);
+     $result = mysqli_query($conn, $query);
      $total = mysqli_num_rows($result);
-     //echo($total);
-     if($total==1)
+
+     if($total >= 1)
      { 
-       
-       header("location:index.html");
+       ob_end_clean();
+       header("Location: index.html");
+       exit();
      } 
      else
      {
-       echo"<font color='red'><script>alert('Login failed..!')</script></font>";
+       $login_error = "Invalid Email or Password. Please try again.";
      }
   }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>login page</title>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+  <title>STAR X — Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="sign in.css">
-
 </head>
 
 <body>
     
-  <button class="btn"><i class="fa-sharp fa-solid fa-arrow-left"></i>&nbsp; <a href="../auth/home-page.php">Back to home</a></button>
-  <form class="form" action="" method="POST">
-  <div class="contener">
-    <div class="login">
-       Login
-       
-        <div class="icon">
-          <i class="fa-regular fa-envelope"></i> <input type="email"placeholder=" Email_Id...!"class="first" name="email">
-        </div>
-        <div class="icon">
-          <i class="fa-solid fa-lock"></i> <input type="password"placeholder=" password...!"class="first" name="password">
-        </div>
+  <a href="../auth/home-page.php" class="btn-back">
+    <i class="ri-arrow-left-line"></i> Back to Home
+  </a>
 
-        <!-- <div class="forget_pass"><a href="forget_pass.html" >forgot password ?</a></div> -->
-        
-        <div>
-          <input type="submit"value="submit"class="submit" name="submit"/>
+  <form class="form" action="" method="POST">
+    <div class="contener">
+      <div class="auth-brand">
+        <span class="star-icon">&#9733;</span>
+        <span class="brand-title">STAR X</span>
+      </div>
+
+      <h2 class="login-title">Welcome Back</h2>
+      <p class="login-subtitle">Sign in to access your cinema account</p>
+
+      <?php if (!empty($login_error)): ?>
+        <div class="alert alert-danger">
+          <i class="ri-error-warning-line"></i> <?php echo $login_error; ?>
         </div>
-         
+      <?php endif; ?>
+       
+      <div class="input-group">
+        <i class="ri-mail-line field-icon"></i>
+        <input type="email" placeholder="Email Address" class="first" name="email" required autocomplete="email">
+      </div>
+
+      <div class="input-group">
+        <i class="ri-lock-2-line field-icon"></i>
+        <input type="password" placeholder="Password" class="first" name="password" required autocomplete="current-password">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit" name="submit">
+          Sign In <i class="ri-arrow-right-line"></i>
+        </button>
+      </div>
+
+      <p class="signup-prompt">
+        Don't have an account? <a href="sign up.php" class="a">Sign Up</a>
+      </p>
     </div>
-      <h3> !! <a href="sign up.php" class="a">sign up</a> !! for new users !!</h3>
-  </div>
-</form>
+  </form>
 </body>
 </html>

@@ -1,89 +1,108 @@
 <?php
-  include("connection.php");
+ob_start(); // Buffer output so header() always works
+include("connection.php");
+error_reporting(0);
+
+$msg = "";
+$msg_type = "";
+
+if(isset($_POST['register']))
+{
+    $fname       = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname       = mysqli_real_escape_string($conn, $_POST['lname']);
+    $email       = mysqli_real_escape_string($conn, $_POST['email']);
+    $password    = mysqli_real_escape_string($conn, $_POST['password']);
+    $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
+    
+    if ($password !== $re_password) {
+        $msg = "Passwords do not match!";
+        $msg_type = "danger";
+    } else {
+        $query = "INSERT INTO signup (First_Name, Last_Name, Email, Password, Re_Password) VALUES ('$fname','$lname','$email','$password','$re_password')";
+        $query_run = mysqli_query($conn, $query);
+        
+        if($query_run) {
+            $msg = "Account created successfully! You can now <a href='sign in.php'>Login</a>.";
+            $msg_type = "success";
+        } else {
+            $msg = "Registration failed. Email may already be registered.";
+            $msg_type = "danger";
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register Form</title>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
- <link rel="stylesheet" href="sing up.css">
+  <title>STAR X — Create Account</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="sing up.css">
 </head>
 
 <body>
-  <button class="btn"><i class="fa-sharp fa-solid fa-arrow-left"></i>&nbsp; <a href="../auth/home-page.php">Back to home</a></button>
+
+  <a href="../auth/home-page.php" class="btn-back">
+    <i class="ri-arrow-left-line"></i> Back to Home
+  </a>
+
   <form class="form" action="" method="POST">
-  <div class="contener">
-    <div class="signup">
-       Sign up
-        <div class="icon">
-          <i class="fa-regular fa-user"></i> <input type="text"  placeholder=" First name...!"class="first" name="fname" required>
-        </div>
-        <div class="icon">
-          <i class="fa-regular fa-user"></i> <input type="text"placeholder=" last name...!" class="first" name="lname" required>
-        </div>
-  
-        <div class="icon">
-          <i class="fa-regular fa-envelope"></i> <input type="email"placeholder=" email id...!"class="first" name="email" required>
-        </div>
-        
-        <div class="icon">
-          <i class="fa-solid fa-lock"></i> <input type="password"placeholder=" password...!"class="first" name="password" required>
-        </div>
-        <div class="icon">
-          <i class="fa-solid fa-lock"></i> <input type="password"placeholder="Re-enter password...!" class="first" name="re_password" required>
-        </div>
+    <div class="contener">
+      <div class="auth-brand">
+        <span class="star-icon">&#9733;</span>
+        <span class="brand-title">STAR X</span>
+      </div>
 
-        
+      <h2 class="login-title">Create Account</h2>
+      <p class="login-subtitle">Join STAR X to unlock unlimited cinema reviews</p>
 
-
-
-
-        <div>
-          <input type="submit"value="Register"class="submit" name="register" />
+      <?php if (!empty($msg)): ?>
+        <div class="alert alert-<?php echo $msg_type; ?>">
+          <i class="ri-<?php echo ($msg_type === 'success') ? 'checkbox-circle-line' : 'error-warning-line'; ?>"></i> <?php echo $msg; ?>
         </div>
+      <?php endif; ?>
+
+      <div class="name-row">
+        <div class="input-group">
+          <i class="ri-user-3-line field-icon"></i>
+          <input type="text" placeholder="First Name" class="first" name="fname" required>
+        </div>
+        <div class="input-group">
+          <i class="ri-user-3-line field-icon"></i>
+          <input type="text" placeholder="Last Name" class="first" name="lname" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <i class="ri-mail-line field-icon"></i>
+        <input type="email" placeholder="Email Address" class="first" name="email" required autocomplete="email">
+      </div>
+
+      <div class="input-group">
+        <i class="ri-lock-2-line field-icon"></i>
+        <input type="password" placeholder="Password" class="first" name="password" required autocomplete="new-password">
+      </div>
+
+      <div class="input-group">
+        <i class="ri-lock-line field-icon"></i>
+        <input type="password" placeholder="Re-enter Password" class="first" name="re_password" required autocomplete="new-password">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit" name="register">
+          Create Account <i class="ri-user-add-line"></i>
+        </button>
+      </div>
+
+      <p class="signup-prompt">
+        Already have an account? <a href="sign in.php" class="a">Sign In</a>
+      </p>
     </div>
-      <h3>Already have a registered user !! <u><a href="sign in.php" class="a">Login</a></u> !!</h3>
-  </div>
-</form>
+  </form>
+
 </body>
-
-<?php
-    
-    if(isset($_POST['register']))
-  {
-   
-  $fname       = $_POST['fname'];
-  $lname       = $_POST['lname'];
-  $email       = $_POST['email'];
-  $password    = $_POST['password'];//password and re-password  are matched then login
-  $re_password = $_POST['re_password'];
-  
- 
- 
- 
-  $query = "INSERT INTO signup (First_Name, Last_Name,  Email, Password, Re_Password) values ('$fname','$lname','$email','$password','$re_password')";
-   
-  $query_run = mysqli_query($conn,$query);
-  //$result = mysqli_error($conn,$query);
-  
-  if($query_run)
- 
-  {
-     echo"<script>alert('Register Successfully...!')</script>";
-
-  }
-  else
-  {
-    echo"<font color='Red'>query failed...!";
-  }
-
-}
-
-?>
-
 </html>
+
 
